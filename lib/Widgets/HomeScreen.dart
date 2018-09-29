@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:devfest_18/main.dart';
 import 'package:devfest_18/ApiClient.dart';
 import 'package:devfest_18/Repos.dart';
-import 'dart:convert';
-import 'dart:async';
 import 'package:http/http.dart' as http;
+import 'DetailScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -25,6 +23,7 @@ class _homeScreenState extends State {
            child: new FutureBuilder<List<Repos>>(
              future: ApiClient.fetchData(http.Client()),
              builder: (context,snapshot){
+               if(snapshot.hasData){
                return  new Container(
                  margin: EdgeInsets.only(top:40.0,right: 23.0),
                  alignment: FractionalOffset.centerRight,
@@ -59,6 +58,8 @@ class _homeScreenState extends State {
                    ],
                  ),
                );
+             }
+             return new Center(child: Text(""),);
              },
            ),
          ),
@@ -74,7 +75,15 @@ class _homeScreenState extends State {
                     itemCount: snapshot.data.length,
                     itemBuilder: (context, int index) {
                       return new GestureDetector(
-                        onTap: () => print(index),
+                        onTap: () {
+                          setState(() {
+
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> GdgTekirdagScreen(liste: snapshot.data)));
+
+
+                          });
+
+                        },
                         child: Card(
                           color: Colors.white,
                           child: new Container(
@@ -90,12 +99,14 @@ class _homeScreenState extends State {
                                   height: 26.0,
                                 ),
                                 new Container(
+                                  alignment: FractionalOffset.center,
                                   child: OutlineButton.icon(
                                       onPressed: () {},
                                       icon: Icon(Icons.event),
                                       label: Text("Meetup")),
                                 ),
                                 new Container(
+                                  alignment: FractionalOffset.bottomCenter,
                                   child: new Text(
                                     snapshot.data[index].tarih,
                                     textAlign: TextAlign.center,

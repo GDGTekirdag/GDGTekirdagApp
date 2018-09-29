@@ -12,7 +12,7 @@ class Repos {
    return Repos(
       aciklama: json['Aciklama'] as String,
       ad:json['Ad'] as String,
-      katilimciSayisi:json['Katilimcisayisi'] as String,
+      katilimciSayisi:json['KatilimciSayisi'] as String,
       meetUp:json['MeetUp'] as String,
       tarih:json['Tarih'] as String,
   );
