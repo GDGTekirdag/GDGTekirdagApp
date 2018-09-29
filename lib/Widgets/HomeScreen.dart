@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
-
+import 'package:devfest_18/main.dart';
+import 'package:devfest_18/ApiClient.dart';
+import 'package:devfest_18/Repos.dart';
+import 'dart:convert';
+import 'dart:async';
+import 'package:http/http.dart' as http;
 
 class HomeScreen extends StatefulWidget {
   @override
   _homeScreenState createState() => new _homeScreenState();
 }
 
-class _homeScreenState extends State<HomeScreen> {
+class _homeScreenState extends State {
   Widget build(BuildContext context) {
     return Container(
       decoration: new BoxDecoration(
@@ -14,71 +19,112 @@ class _homeScreenState extends State<HomeScreen> {
             image: new AssetImage("assets/kopya.jpg"), fit: BoxFit.fitWidth),
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          new Container(
-            margin: EdgeInsets.only(top: 100.0, right: 13.0),
-            alignment: FractionalOffset.centerRight,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                new Text(
-                  "DevFest`18",
-                  style: TextStyle(fontSize: 36.0, color: Colors.white),
-                ),
-                new Container(
-                  margin: EdgeInsets.all(3.0),
-                ),
-                new Text("Tekirdağ",
-                    style: TextStyle(fontSize: 24.0, color: Colors.white)),
-                new Container(
-                  margin: EdgeInsets.all(4.0),
-                ),
-                new Text("17 Ekim 2018",
-                    style: TextStyle(fontSize: 14.0, color: Colors.white)),
-                new Text("Çorlu Mühendislik Fakültesi",
-                    style: TextStyle(fontSize: 14.0, color: Colors.white)),
-                new Container(
-                  margin: EdgeInsets.all(4.0),
-                ),
-                new RaisedButton(
-                  onPressed: () {},
-                  child: new Text("Konum"),
-                ),
-                new Container(
-                  margin: EdgeInsets.all(25.0),
-                ),
-              ],
-            ),
-          ),
+         new Container(
+           child: new FutureBuilder<List<Repos>>(
+             future: ApiClient.fetchData(http.Client()),
+             builder: (context,snapshot){
+               return  new Container(
+                 margin: EdgeInsets.only(top:40.0,right: 23.0),
+                 alignment: FractionalOffset.centerRight,
+                 child: Column(
+                   mainAxisAlignment: MainAxisAlignment.end,
+                   crossAxisAlignment: CrossAxisAlignment.end,
+                   children: <Widget>[
+                     new Text(
+                       snapshot.data.first.ad,
+                       style: TextStyle(fontSize: 36.0, color: Colors.white),
+                       textAlign: TextAlign.end,
+                     ),
+                     new Container(
+                       margin: EdgeInsets.all(3.0),
+                     ),
+                     new Text( snapshot.data.first.tarih,
+                         style: TextStyle(fontSize: 24.0, color: Colors.white)),
+                     new Container(
+                       margin: EdgeInsets.all(4.0),
+                     ),
+                     new OutlineButton.icon(
+                       onPressed: () {},
+                       icon: Icon(Icons.person_pin_circle),
+                       label: new Text("Konum",style: TextStyle(fontSize: 18.0),),
+                       highlightColor: Colors.black,
+                       textColor: Color(0xFFe6c131),
+                       borderSide: BorderSide(color:Color(0xFFe6c131),width: 3.0),
+                     ),
+                     new Container(
+                       margin: EdgeInsets.all(25.0),
+                     ),
+                   ],
+                 ),
+               );
+             },
+           ),
+         ),
           new Container(
             height: 200.0,
-            child: new ListView(
-              scrollDirection: Axis.horizontal,
-              padding: EdgeInsets.only(left: 90.09),
-              children: <Widget>[
-                new Card(
-                  child: new Container(
-                    width: 150.0,
-                    color: Colors.red,
-                    child: Text("DevFest`18"),
-                  ),
-                ),
-                new Card(
-                  child: new Container(
-                    width: 150.0,
-                    color: Colors.red,
-                    child: Text("Devfest`18"),
-                  ),
-                ),
-                new Card(
-                  child: new Container(
-                    width: 150.0,
-                    color: Colors.red,
-                    child: Text("Devfest`18"),
-                  ),
-                ),
-              ],
+            child: new FutureBuilder<List<Repos>>(
+              future: ApiClient.fetchData(http.Client()),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return new ListView.builder(
+                    padding: EdgeInsets.only(left: 90.0),
+                    scrollDirection: Axis.horizontal,
+                    itemCount: snapshot.data.length,
+                    itemBuilder: (context, int index) {
+                      return new GestureDetector(
+                        onTap: () => print(index),
+                        child: Card(
+                          color: Colors.white,
+                          child: new Container(
+                            width: 150.0,
+                            height: 200.0,
+                            child: new Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                new Container(
+                                  child: new Text(snapshot.data[index].ad,
+                                      textAlign: TextAlign.center),
+                                  margin: EdgeInsets.all(8.0),
+                                  height: 26.0,
+                                ),
+                                new Container(
+                                  child: OutlineButton.icon(
+                                      onPressed: () {},
+                                      icon: Icon(Icons.event),
+                                      label: Text("Meetup")),
+                                ),
+                                new Container(
+                                  child: new Text(
+                                    snapshot.data[index].tarih,
+                                    textAlign: TextAlign.center,
+                                    style: new TextStyle(fontSize: 12.0),
+                                  ),
+                                  margin: EdgeInsets.all(8.0),
+                                ),
+                                new Container(
+                                  alignment: FractionalOffset.bottomRight,
+                                  margin: EdgeInsets.only(right: 12.0),
+                                  child: Image.asset(
+                                    'assets/gdgtekirdag.png',
+                                    width: 56.0,
+                                    height: 48.0,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                }
+                if (snapshot.hasError) return new Text("hasError");
+                return new Center(
+                  child: new CircularProgressIndicator(),
+                );
+              },
             ),
           ),
         ],

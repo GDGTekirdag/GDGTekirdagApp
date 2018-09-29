@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'Widgets/HomeScreen.dart';
 import 'Widgets/GdgTekirdagScreen.dart';
 import 'Widgets/SponsorScreen.dart';
+import 'Repos.dart';
 
 void main() {
   runApp(
     new MaterialApp(
       home: new MyApp(),
+      debugShowCheckedModeBanner: false,
     ),
   );
 }
@@ -24,8 +26,9 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     pages = new List<Widget>();
-    pages = [HomeScreen(), SponsorScreen(), GdgTekirdagScreen()];
+    pages = [HomeScreen(), GdgTekirdagScreen(),SponsorScreen()];
     value = pages[0];
+
   }
 
   @override
