@@ -47,7 +47,7 @@ class GdgTekirdagScreenState extends State<GdgTekirdagScreen> {
                     margin: EdgeInsets.only(right: 12.0),
                     child: new Column(
                       children: <Widget>[
-                        new Text(data[index].ad,style: new TextStyle(color: Colors.white,fontSize: 25.0),textAlign: TextAlign.end,),
+                        new Container(child:new Text(data[index].ad,style: new TextStyle(color: Colors.white,fontSize: 25.0),textAlign: TextAlign.end,),alignment: FractionalOffset.bottomRight,),
                         new Container(padding: new EdgeInsets.all(6.0),),
                         new Container(child:new RaisedButton(onPressed: (){},child: Text("Takvim"),color: Colors.orange),alignment: FractionalOffset.bottomRight,
                         ),

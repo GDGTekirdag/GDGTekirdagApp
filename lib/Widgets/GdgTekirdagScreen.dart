@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:devfest_18/openUrl.dart';
 
 class GdgTekirdagScreen extends StatefulWidget {
   @override
@@ -64,8 +65,12 @@ class _GdgTekirdagScreenState extends State<GdgTekirdagScreen> {
                   ),
                   new Container(
                     alignment: FractionalOffset.center,
-                    child:
-                        new FlatButton(onPressed: () {}, child: Text("MEETUP")),
+                    child: new FlatButton(
+                        onPressed: () {
+                          openUrl.launchUrl(
+                              "https://www.meetup.com/tr-TR/gdgtekirdag/");
+                        },
+                        child: Text("MEETUP")),
                   )
                 ],
               ),
@@ -87,7 +92,6 @@ class _GdgTekirdagScreenState extends State<GdgTekirdagScreen> {
                 color: Colors.white70,
                 margin: new EdgeInsets.all(8.0),
               ),
-
               new Container(
                 child: new ListTile(
                   title: Text("Soru1"),
@@ -96,7 +100,6 @@ class _GdgTekirdagScreenState extends State<GdgTekirdagScreen> {
                 color: Colors.white70,
                 margin: new EdgeInsets.all(8.0),
               ),
-
               new Container(
                 child: new ListTile(
                   title: Text("Soru1"),
@@ -105,7 +108,6 @@ class _GdgTekirdagScreenState extends State<GdgTekirdagScreen> {
                 color: Colors.white70,
                 margin: new EdgeInsets.all(8.0),
               ),
-
               new Container(
                 child: new ListTile(
                   title: Text("Soru1"),
