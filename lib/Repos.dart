@@ -5,11 +5,12 @@ class Repos {
   final String workshop;
   final String sunum;
   final Konum konum;
+  final List img;
   final List<String> konusmacilar = null;
   final String meetUp;
   final String tarih;
 
-  Repos({this.aciklama,this.ad,this.katilimciSayisi,this.meetUp,this.tarih,this.workshop,this.sunum,this.konum});
+  Repos({this.aciklama,this.ad,this.katilimciSayisi,this.meetUp,this.tarih,this.workshop,this.sunum,this.konum,this.img});
 
   factory Repos.fromJson(Map<String, dynamic> json){
    return Repos(
@@ -18,6 +19,7 @@ class Repos {
       katilimciSayisi:json['KatilimciSayisi'] as String,
       workshop: json['Workshop'] as String,
       sunum:json['Sunum'] as String,
+      img: json['Img'] as List,
       meetUp:json['MeetUp'] as String,
       tarih:json['Tarih'] as String,
       konum: Konum.fromJson(json['Konum']) as Konum,

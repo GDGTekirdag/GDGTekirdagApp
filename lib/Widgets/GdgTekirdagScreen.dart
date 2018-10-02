@@ -55,7 +55,11 @@ class _GdgTekirdagScreenState extends State<GdgTekirdagScreen> {
                   new Container(
                     alignment: FractionalOffset.center,
                     child: new FlatButton(
-                        onPressed: () {}, child: Text("ORGANİZER")),
+                        onPressed: () {
+                          setState(() {
+                            Navigator.push(context, new MaterialPageRoute(builder: null));
+                          });
+                        }, child: Text("ORGANİZER")),
                   ),
                   new Container(
                     width: 0.7,

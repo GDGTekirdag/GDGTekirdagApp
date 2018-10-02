@@ -4,19 +4,18 @@ import 'package:url_launcher/url_launcher.dart';
 import 'dart:async';
 import 'package:devfest_18/openUrl.dart';
 
-class  GdgTekirdagScreen extends StatefulWidget{
-
+class GdgTekirdagScreen extends StatefulWidget {
   List<Repos> liste;
   int index;
-  GdgTekirdagScreen({this.liste,this.index});
+  GdgTekirdagScreen({this.liste, this.index});
 
-  createState() => new GdgTekirdagScreenState(data: liste,index: index);
+  createState() => new GdgTekirdagScreenState(data: liste, index: index);
 }
 
 class GdgTekirdagScreenState extends State<GdgTekirdagScreen> {
   List<Repos> data;
   int index;
-  GdgTekirdagScreenState({this.data,this.index});
+  GdgTekirdagScreenState({this.data, this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +28,9 @@ class GdgTekirdagScreenState extends State<GdgTekirdagScreen> {
             new Container(
               height: 250.0,
               decoration: new BoxDecoration(
-                image: new DecorationImage(image: new AssetImage("assets/gdgmap.png"),fit: BoxFit.cover),
+                image: new DecorationImage(
+                    image: new AssetImage("assets/gdgmap.png"),
+                    fit: BoxFit.cover),
               ),
               child: new Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -37,9 +38,18 @@ class GdgTekirdagScreenState extends State<GdgTekirdagScreen> {
                 children: <Widget>[
                   new Container(
                     alignment: FractionalOffset.topLeft,
-                    child: new IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: (){setState(() {
-                      Navigator.of(context).pop();
-                    });},color: Colors.white,iconSize: 38.0,disabledColor: Colors.red,splashColor: Colors.red,),
+                    child: new IconButton(
+                      icon: Icon(Icons.arrow_back_ios),
+                      onPressed: () {
+                        setState(() {
+                          Navigator.of(context).pop();
+                        });
+                      },
+                      color: Colors.white,
+                      iconSize: 38.0,
+                      disabledColor: Colors.red,
+                      splashColor: Colors.red,
+                    ),
                   ),
                   new Container(
                     alignment: FractionalOffset.centerRight,
@@ -47,9 +57,24 @@ class GdgTekirdagScreenState extends State<GdgTekirdagScreen> {
                     margin: EdgeInsets.only(right: 12.0),
                     child: new Column(
                       children: <Widget>[
-                        new Container(child:new Text(data[index].ad,style: new TextStyle(color: Colors.white,fontSize: 25.0),textAlign: TextAlign.end,),alignment: FractionalOffset.bottomRight,),
-                        new Container(padding: new EdgeInsets.all(6.0),),
-                        new Container(child:new RaisedButton(onPressed: (){},child: Text("Takvim"),color: Colors.orange),alignment: FractionalOffset.bottomRight,
+                        new Container(
+                          child: new Text(
+                            data[index].ad,
+                            style: new TextStyle(
+                                color: Colors.white, fontSize: 25.0),
+                            textAlign: TextAlign.end,
+                          ),
+                          alignment: FractionalOffset.bottomRight,
+                        ),
+                        new Container(
+                          padding: new EdgeInsets.all(6.0),
+                        ),
+                        new Container(
+                          child: new RaisedButton(
+                              onPressed: () {},
+                              child: Text("Takvim"),
+                              color: Colors.orange),
+                          alignment: FractionalOffset.bottomRight,
                         ),
                       ],
                     ),
@@ -58,13 +83,16 @@ class GdgTekirdagScreenState extends State<GdgTekirdagScreen> {
               ),
             ),
             new Container(
-              margin: EdgeInsets.only(left: 20.0,right: 23.0),
+              margin: EdgeInsets.only(left: 20.0, right: 23.0),
               child: new Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   new Column(
                     children: <Widget>[
-                      new Text("Katılımcı Sayısı",style: TextStyle(fontWeight: FontWeight.bold),),
+                      new Text(
+                        "Katılımcı Sayısı",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       new Text(data[index].katilimciSayisi),
                     ],
                   ),
@@ -73,11 +101,12 @@ class GdgTekirdagScreenState extends State<GdgTekirdagScreen> {
                     color: Colors.black,
                     child: new Text(""),
                     padding: EdgeInsets.all(12.0),
-                    margin: EdgeInsets.only(top: 6.0,bottom: 6.0),
+                    margin: EdgeInsets.only(top: 6.0, bottom: 6.0),
                   ),
                   new Column(
                     children: <Widget>[
-                      new Text("Sunum",style: TextStyle(fontWeight: FontWeight.bold)),
+                      new Text("Sunum",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
                       new Text(data[index].sunum),
                     ],
                   ),
@@ -86,11 +115,12 @@ class GdgTekirdagScreenState extends State<GdgTekirdagScreen> {
                     color: Colors.black,
                     child: new Text(""),
                     padding: EdgeInsets.all(12.0),
-                    margin: EdgeInsets.only(top: 6.0,bottom: 6.0),
+                    margin: EdgeInsets.only(top: 6.0, bottom: 6.0),
                   ),
                   new Column(
                     children: <Widget>[
-                      new Text("WorkShop",style: TextStyle(fontWeight: FontWeight.bold)),
+                      new Text("WorkShop",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
                       new Text(data[index].workshop),
                     ],
                   ),
@@ -101,15 +131,22 @@ class GdgTekirdagScreenState extends State<GdgTekirdagScreen> {
               width: 10.0,
               color: Colors.black,
               alignment: FractionalOffset.center,
-              margin: EdgeInsets.only(top:10.0,right: 160.0,left: 160.0,bottom: 10.0),
+              margin: EdgeInsets.only(
+                  top: 10.0, right: 160.0, left: 160.0, bottom: 10.0),
               padding: EdgeInsets.all(0.2),
             ),
             new Container(
-              child:new Text(data[index].tarih,textAlign: TextAlign.center,),
+              child: new Text(
+                data[index].tarih,
+                textAlign: TextAlign.center,
+              ),
               margin: EdgeInsets.only(bottom: 10.0),
             ),
             new Container(
-              child:new Text("  " +data[index].aciklama,textAlign: TextAlign.center,),
+              child: new Text(
+                "  " + data[index].aciklama,
+                textAlign: TextAlign.center,
+              ),
             ),
             new Container(
               alignment: FractionalOffset.bottomRight,
@@ -119,14 +156,50 @@ class GdgTekirdagScreenState extends State<GdgTekirdagScreen> {
                     setState(() {
                       openUrl.launchUrl(data[index].meetUp);
                     });
-
                   },
                   color: Colors.white70,
                   borderSide: BorderSide(color: Colors.black54),
-                  icon: Icon(Icons.event,color: Colors.blueGrey,),
-                  label: Text("Meetup",style: TextStyle(fontSize: 12.0),)),
+                  icon: Icon(
+                    Icons.event,
+                    color: Colors.blueGrey,
+                  ),
+                  label: Text(
+                    "Meetup",
+                    style: TextStyle(fontSize: 12.0),
+                  )),
             ),
+            new Container(
+              width: 150.0,
+              height: 150.0,
+              child: new GridView.builder(
+                  itemCount: data[index].img.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3),
+                  itemBuilder: (context,int t){
+                    return new GestureDetector(
+                      child: new Card(
+                        color: Colors.grey,
+                        child: Image.network(data[index].img[t],width: 10.0,height: 10.0,fit: BoxFit.cover,),
+                      ),
+                      onTap: (){
+                       setState(() {
+                         AlertDialog alert=new AlertDialog(
+                           contentPadding: EdgeInsets.all(0.0),
 
+                             content:new Container(
+                               color: Colors.red,
+                               child: Image.network(data[index].img[t],width: 350.0,height: 300.0,fit: BoxFit.cover,),
+                               ),
+
+                         );
+                         showDialog(context: this.context,child: alert);
+                       });
+                      },
+                    );
+                  },
+
+                  ),
+            ),
           ],
         ),
       ),

@@ -82,7 +82,7 @@ class _homeScreenState extends State {
                                         openUrl.launchUrl(snapshot.data.last.meetUp);
                                       });
                                     },
-                                    icon: Icon(Icons.person_pin_circle),
+                                    icon: Icon(Icons.event),
                                     label: new Text(
                                       "Meetup",
                                       style: TextStyle(fontSize: 18.0),
