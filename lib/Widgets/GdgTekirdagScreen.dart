@@ -57,7 +57,7 @@ class _GdgTekirdagScreenState extends State<GdgTekirdagScreen> {
                     child: new FlatButton(
                         onPressed: () {
                           setState(() {
-                            Navigator.push(context, new MaterialPageRoute(builder: null));
+                            openUrl.launchUrl("https://www.meetup.com/tr-TR/gdgtekirdag/members/?op=leaders");
                           });
                         }, child: Text("ORGANİZER")),
                   ),
@@ -90,32 +90,40 @@ class _GdgTekirdagScreenState extends State<GdgTekirdagScreen> {
               ),
               new Container(
                 child: new ListTile(
-                  title: Text("Soru1"),
-                  subtitle: Text("Cevap1"),
+                  title: Text("Para sizde mi kalıyor ?"),
+                  subtitle: Text("Hayır"),
                 ),
                 color: Colors.white70,
                 margin: new EdgeInsets.all(8.0),
               ),
               new Container(
                 child: new ListTile(
-                  title: Text("Soru1"),
-                  subtitle: Text("Cevap1"),
+                  title: Text("Katılım ücretli mi?"),
+                  subtitle: Text("Hayır isteyen herkes tüm etkinliklerimize hiçbir ücret ödemeden katılabilir. Yani ücretsizdir."),
                 ),
                 color: Colors.white70,
                 margin: new EdgeInsets.all(8.0),
               ),
               new Container(
                 child: new ListTile(
-                  title: Text("Soru1"),
-                  subtitle: Text("Cevap1"),
+                  title: Text("Etkinliklere katılmak için yazılımcı olmak gerekiyor mu ? "),
+                  subtitle: Text("Hayır. Yeni teknolojilere ilgi duymanız yeterli olacaktır."),
                 ),
                 color: Colors.white70,
                 margin: new EdgeInsets.all(8.0),
               ),
               new Container(
                 child: new ListTile(
-                  title: Text("Soru1"),
-                  subtitle: Text("Cevap1"),
+                  title: Text("Sizler Google çalışanı mısınız? "),
+                  subtitle: Text("Hayır. Google bizim ana destekçimiz. "),
+                ),
+                color: Colors.white70,
+                margin: new EdgeInsets.all(8.0),
+              ),
+              new Container(
+                child: new ListTile(
+                  title: Text("Ne sıklıkla etkinlikler düzenliyorsunuz ? "),
+                  subtitle: Text("Yılda 2 büyük etkinlik(DevFest ve WTM) düzenliyoruz ve bunun yanında aylık etkinliklerimizde oluyor."),
                 ),
                 color: Colors.white70,
                 margin: new EdgeInsets.all(8.0),

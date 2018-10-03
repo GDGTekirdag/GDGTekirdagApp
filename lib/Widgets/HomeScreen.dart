@@ -106,7 +106,8 @@ class _homeScreenState extends State {
                             padding: EdgeInsets.only(left: 90.0),
                             scrollDirection: Axis.horizontal,
                             itemCount: snapshot.data.length,
-                            itemBuilder: (context, int index) {
+                            itemBuilder: (context, int count) {
+                              int index=(snapshot.data.length-1)-count;
                               return new GestureDetector(
                                 onTap: () {
                                   setState(() {

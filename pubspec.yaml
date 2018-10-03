@@ -36,6 +36,7 @@ flutter:
     - assets/gdgtekirdag.png
     - assets/gdgmap.png
     - assets/googlewalpaper1.png
+    - assets/orion.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
