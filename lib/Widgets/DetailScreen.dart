@@ -69,13 +69,6 @@ class GdgTekirdagScreenState extends State<GdgTekirdagScreen> {
                         new Container(
                           padding: new EdgeInsets.all(6.0),
                         ),
-                        new Container(
-                          child: new RaisedButton(
-                              onPressed: () {},
-                              child: Text("Takvim"),
-                              color: Colors.orange),
-                          alignment: FractionalOffset.bottomRight,
-                        ),
                       ],
                     ),
                   ),
