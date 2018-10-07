@@ -179,10 +179,7 @@ class GdgTekirdagScreenState extends State<GdgTekirdagScreen> {
                          AlertDialog alert=new AlertDialog(
                            contentPadding: EdgeInsets.all(0.0),
                              content:new GestureDetector(
-                               child: new Container(
-                                 color: Colors.red,
-                                 child: Image.network(data[index].img[t],width: 350.0,height: 300.0,fit: BoxFit.cover,),
-                               ),
+                               child: Image.network(data[index].img[t])
                              ),
 
                          );

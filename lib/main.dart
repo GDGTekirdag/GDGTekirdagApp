@@ -38,18 +38,18 @@ class _MyAppState extends State<MyApp> {
         currentIndex: navigationIndex,
         items: <BottomNavigationBarItem>[
           new BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text("Home"),
+            icon: Icon(Icons.home,color: Colors.orange,),
+            title: Text("Home",style: TextStyle(color: Colors.orange),),
             backgroundColor: Colors.black,
           ),
           new BottomNavigationBarItem(
-            icon: Icon(Icons.event),
-            title: Text("GDG Tekirdağ"),
-            backgroundColor: Colors.black,
+            icon: Icon(Icons.event,color: Colors.orange,),
+            title: Text("GDG Tekirdağ",style: TextStyle(color: Colors.orange),),
+            backgroundColor: Colors.white70,
           ),
           new BottomNavigationBarItem(
-              icon: Icon(Icons.supervisor_account),
-              title: Text("Sponsorlar"),
+              icon: Icon(Icons.supervisor_account,color: Colors.orange,),
+              title: Text("Sponsorlar",style: TextStyle(color: Colors.orange),),
               backgroundColor: Colors.black),
         ],
         type: BottomNavigationBarType.shifting,
